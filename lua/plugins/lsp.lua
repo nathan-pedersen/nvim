@@ -101,13 +101,8 @@ return {
 
                 clangd = function()
                     require('lspconfig').clangd.setup({
-                        init_options = {
-                            -- fallbackFlags are used when no compile_commands.json is found
-                            fallbackFlags = {
-                                "-std=c99",
-                                "-I", vim.fn.getcwd() .. "/include",
-                            },
-                        },
+                        cmd = { 'clangd', '--compile-commands-dir=build' },
+                        filetypes = { 'c', 'cpp' },
                     })
                 end,
 
